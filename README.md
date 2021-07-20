@@ -1,2 +1,2 @@
-# videojs-test.github.io-
+# videojs-test.github.io
 VideoJS Stream Tester
