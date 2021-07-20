@@ -35,17 +35,21 @@
         background-color: #868688;
       }
       .starter-template {
-        /*padding: 40px 15px;*/
         padding-top: 10px;
         text-align: center;
       }
       .video-js {
         margin: 0 auto;
       }
-      input {
-        margin-top: 15px;
-        min-width: 450px;
+      input, select {
+        margin-top: 5px;
         padding: 5px;
+      }
+      #streamSelect {
+        min-width: 570px;
+      }
+      #url, #mimetype {
+        min-width: 540px;
       }
     </style>
 
@@ -89,6 +93,47 @@
         </video-js>
 
         <form id=load-url>
+          <div>
+            <label>
+              Stream Select:
+              <select id="streamSelect" class="innerControls">
+                <option value="">Select a test-stream from drop-down menu. Or enter custom URL below</option>
+                <option value="bbb" selected="selected">Big Buck Bunny - adaptive qualities</option>
+                <option value="fdr">FDR - CDN packaged, 4s segments, 180p - 1080p</option>
+                <option value="bigBuckBunny480p">Big Buck Bunny - 480p only</option>
+                <option value="arte">ARTE China,ABR</option>
+                <option value="deltatreDAI">Ad-insertion in event stream</option>
+                <option value="issue666">Surveillance footage - https://github.com/video-dev/hls.js/issues/666</option>
+                <option value="closedCaptions">CNN special report, with CC</option>
+                <option value="customIvBadDts">Custom IV with bad PTS DTS</option>
+                <option value="oceansAES">AES-128 encrypted, ABR</option>
+                <option value="tracksWithAES">AES-128 encrypted, TS main with AAC audio track</option>
+                <option value="mp3Audio">MP3 VOD demo</option>
+                <option value="mpegAudioOnly">MPEG Audio Only demo</option>
+                <option value="fmp4">HLS fMP4 Angel-One multiple audio-tracks</option>
+                <option value="fmp4Bitmovin">HLS fMP4 by Bitmovin</option>
+                <option value="fmp4BitmovinHevc">HLS HEVC fMP4 by Bitmovin (Safari and Edge? only as of 2020-08)</option>
+                <option value="offset_pts">DK Turntable, PTS shifted by 2.3s</option>
+                <option value="angelOneShakaWidevine">Shaka-packager Widevine DRM (EME) HLS-fMP4 - Angel One Demo</option>
+                <option value="audioOnlyMultipleLevels">Multiple non-alternate audio levels</option>
+                <option value="pdtDuplicate">Duplicate sequential PDT values</option>
+                <option value="pdtLargeGap">PDTs with large gaps following discontinuities</option>
+                <option value="pdtBadValues">PDTs with bad values</option>
+                <option value="pdtOneValue">One PDT, no discontinuities</option>
+                <option value="noTrackIntersection">Audio/video track PTS values do not intersect; 10 second start gap</option>
+                <option value="altAudioAndTracks">Alternate audio tracks, and multiple VTT tracks</option>
+                <option value="altAudioAudioOnly">Audio only with alternate audio track (Sintel)</option>
+                <option value="altAudioMultiAudioOnly">Audio only with multiple alternate audio tracks (Angel One)</option>
+                <option value="muxedFmp4">Muxed av fmp4 - appended to "audiovideo" SourceBuffer</option>
+                <option value="altAudioWithPdtAndStartGap">PDT before each segment, 1.59s start gap</option>
+                <option value="AppleAdvancedHevcAvcHls">Advanced stream (HEVC/H.264, AC-3/AAC,  WebVTT, fMP4 segments)</option>
+                <option value="AppleLowLatencyHls">Apple Low-Latency HLS sample (TS segments)</option>
+                <option value="AppleLowLatencyCmafHls">Apple Low-Latency HLS sample (fMP4 segments)</option>
+                <option value="groupIds">Group-id: subtitle and audio</option>
+                <option value="redundantLevelsWithTrackGroups">Redundant levels with subtitle and audio track groups</option>
+              </select>
+            </label>
+          </div>
           <div>
             <label>
               Video URL:
