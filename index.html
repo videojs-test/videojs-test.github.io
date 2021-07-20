@@ -117,10 +117,10 @@
         <h2>Getting Started</h2>
         <p>
           Download
-          <a href="https://github.com/videojs/video.js/releases/latest">video.js</a>
+          <a href="https://github.com/videojs/video.js/releases/latest" target="_blank">video.js</a>
           and include it in your page:
         </p>
-        <pre>&lt;video-js id=example-video width=960 height=540 class="vjs-default-skin" controls&gt;
+        <pre id="pre_code">&lt;video-js id=example-video width=960 height=540 class="vjs-default-skin" controls&gt;
   &lt;source
      src="https://example.com/index.m3u8"
      type="application/x-mpegURL"&gt;
@@ -140,6 +140,7 @@ player.play();
          to use videojs-http-streaming -->
     <script src="https://unpkg.com/jquery@1.11.2/dist/jquery.min.js"></script>
     <script src="https://unpkg.com/bootstrap@3.3.7/dist/js/bootstrap.min.js"></script>
+    <script src="./js/highlight.js"></script>
 
 
     <!--------------------------------------------------------------------------
@@ -179,6 +180,7 @@ player.play();
           return false;
         });
       }(window, window.videojs));
+      w3CodeColor(document.getElementById("pre_code"));
     </script>
   </body>
 </html>
