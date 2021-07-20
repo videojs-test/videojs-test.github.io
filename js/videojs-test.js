@@ -1,7 +1,67 @@
 
 
 
-module.exports = {
+$(document).ready(function () {
+  // setupConfigEditor();
+
+  $('#streamSelect').change(function () {
+    var key = $('#streamSelect').val() || Object.keys(testStreams)[0];
+    selectedTestStream = testStreams[key];
+    var streamUrl = selectedTestStream.url;
+    $('#url').val(streamUrl);
+    // loadSelectedStream();
+  });
+});
+
+
+/**
+ * Create test stream
+ * @param {string} url
+ * @param {string} description
+ * @param {boolean} [live]
+ * @param {boolean} [abr]
+ * @param {string[]} [skip_ua]
+ * @returns {{url: string, description: string, live: boolean, abr: boolean, skip_ua: string[]}}
+ */
+function createTestStream(url, description, live, abr, skip_ua) {
+  if (live === void 0) {
+    live = false;
+  }
+
+  if (abr === void 0) {
+    abr = true;
+  }
+
+  if (skip_ua === void 0) {
+    skip_ua = [];
+  }
+
+  return {
+    url: url,
+    description: description,
+    live: live,
+    abr: abr,
+    skip_ua: skip_ua
+  };
+}
+
+
+/**
+ * @param {Object} target
+ * @param {Object} [config]
+ * @returns {{url: string, description: string, live: boolean, abr: boolean, skip_ua: string[]}}
+ */
+function createTestStreamWithConfig(target, config) {
+  if (typeof target !== 'object') {
+    throw new Error('target should be object');
+  }
+
+  var testStream = createTestStream(target.url, target.description, target.live, target.abr, target.skip_ua);
+  testStream.config = config;
+  return testStream;
+}
+
+module_exports = {
   bbb: {
     url: 'https://test-streams.mux.dev/x36xhzz/x36xhzz.m3u8',
     description: 'Big Buck Bunny - adaptive qualities',
